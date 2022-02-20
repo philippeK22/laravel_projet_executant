@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
             AvatarSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            CategorieSeeder::class,
+            ImageSeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }

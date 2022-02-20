@@ -54,24 +54,32 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        @admin()
                         <a href="{{ route("users.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Users</span>
                         </a>
+                        @endadmin
                     </li>
                     <li class="nav-item">
+                        @admin()
                         <a href="{{ route("avatar.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Avatars</span>
                         </a>
+                        @endadmin
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route("dashboard") }}" class="nav-link align-middle px-0">
+                        @admin()
+                        <a href="{{ route("image.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Images</span>
                         </a>
+                        @endadmin
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route("dashboard") }}" class="nav-link align-middle px-0">
+                        @admin()
+                        <a href="{{ route("categorie.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Categories</span>
                         </a>
+                        @endadmin
                     </li>
                     <li class="nav-item">
                         <a href="{{ route("dashboard") }}" class="nav-link align-middle px-0">

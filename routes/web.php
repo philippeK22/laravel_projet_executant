@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,8 +35,17 @@ Route::get('/admin/users/edit',[UserController::class,"edit"])->name("users.edit
 
 Route::delete("/admin/users/{user}/destroy",[UserController::class,"destroy"])->name("users.destroy");
 
-Route::put("/admin/users/{id}/update",[UserController::class,"update"])->name("users.update");
+Route::put("/admin/users/{user}/update",[UserController::class,"update"])->name("users.update");
 
-Route::resource("admin/avatar",AvatarController::class)->middleware(["auth"]);
+Route::put('admin/user/{user}/edit', [UserController::class, 'updateMembre'])->name('membre.update');
 
+Route::resource("admin/avatar",AvatarController::class)->middleware(["auth","isAdmin"]);
+
+Route::resource('/admin/categorie', CategorieController::class)->middleware(["auth","isAdmin"]);
+
+Route::resource('/admin/image', ImageController::class)->middleware(["auth","isAdmin"]);
+
+Route::get('/admin/blog', [ArticleController::class, 'blog'])->name('blog.index');
+
+Route::resource('admin/article', ArticleController::class);
 require __DIR__.'/auth.php';

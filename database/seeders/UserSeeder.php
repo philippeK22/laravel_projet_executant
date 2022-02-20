@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 "email"=>"philippe@hotmail.com",
                 "password"=>Hash::make("philippo"),
                 "role_id"=>1,
-                "avatar_id"=>1,
+                "avatar_id"=>1, //home avatar
                 "created_at"=>now(),
             ],
 
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 "email"=>"kanen@hotmail.com",
                 "password"=>Hash::make("zidane10"),
                 "role_id"=>2,
-                "avatar_id"=>2,
+                "avatar_id"=>2, //femme avatar
                 "created_at"=>now(),
             ],
         ]);

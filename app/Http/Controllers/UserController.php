@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -56,23 +57,42 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user){
-        $request->validate([
-            'name' => ['required'],
-            'prenom' => ['required'],
-            'age' => ['required', 'numeric'],
-            'email' => ['required'],
-            'role_id' => ['required', 'numeric'],
-        ]);
+        // $request->validate([
+        //     'name' => ['required'],
+        //     'prenom' => ['required'],
+        //     'age' => ['required', 'numeric'],
+        //     'email' => ['required'],
+        //     'role_id' => ['required', 'numeric'],
+        // ]);
         $user->name = $request->name;
         $user->prenom = $request->prenom;
         $user->age = $request->age;
         $user->email = $request->email;
-        $user->role_id = $request->role_id;
+        $user->avatar_id = $request->avatar_id;
         $user->save();
-        return redirect()->route('user.index')->with('success', 'Utilisateur ' . $user->id .' bien modifié !');
+        return redirect()->back()->with('success', 'Profil a bien été modifié');
 
 
 
+    }
+    public function updateMembre(User $user, Request $request)
+    {
+        $this->authorize('isRealUser', $user);
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'age' => 'required|numeric',
+            'email' => 'required|string',
+            'avatar_id' => 'required',
+        ]);
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->age = $request->age;
+        $user->email = $request->email;
+        $user->avatar_id = $request->avatar_id;
+
+        $user->save();
+        return redirect()->back()->with('success', 'Profil a bien été modifié');
     }
 
 }

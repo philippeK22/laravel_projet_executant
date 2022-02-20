@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
             "age"=>["required"],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            "avatar_id"=>"required",
         ]);
 
         $user = User::create([
@@ -51,10 +52,11 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             "avatar_id"=>$request->avatar_id,
             'password' => Hash::make($request->password),
+            // 'avatar_id' => $request->avatar_id,
             "role_id"=>2,
         ]);
 
-       
+
         event(new Registered($user));
 
         Auth::login($user);

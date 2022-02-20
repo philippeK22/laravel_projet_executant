@@ -10,6 +10,7 @@
 </head>
 <body>
 
+    @include('layouts.flash')
     @yield('content')
 
 
