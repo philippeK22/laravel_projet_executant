@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        @admin()
+                        @admin
                         <a href="{{ route("users.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Users</span>
                         </a>
@@ -82,8 +82,13 @@
                         @endadmin
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route("dashboard") }}" class="nav-link align-middle px-0">
+                        <a href="{{ route("gallerie.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Gallerie</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("blog.index") }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Blog</span>
                         </a>
                     </li>
              </ul>

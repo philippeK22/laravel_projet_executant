@@ -24,13 +24,13 @@ class ImageSeeder extends Seeder
             ],
             [
                 'nom' => 'Range Rover',
-                'src' => 'range.jpg',
+                'src' => 'roverRouge.jpg',
                 'categorie_id' => 2,
                 'created_at' => now(),
             ],
             [
                 'nom' => 'McLaren',
-                'src' => 'mcLaren.jpg',
+                'src' => 'laren.jpg',
                 'categorie_id' => 3,
                 'created_at' => now(),
             ],

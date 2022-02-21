@@ -10,8 +10,9 @@
 <div class="flex flex-wrap ">
     @foreach ($images as $image)
     <div class="mx-auto">
-        <div class=""
+        <div class="h-100 rounded "
             style="background-image: url({{ asset('img/'. $image->src) }})">
+
         </div>
 
         <div class=" w-full bg-white -mt-10 shadow-lg rounded-lg p-5 text-center">

@@ -3,6 +3,7 @@
 @section('content')
 <div>
     <h1 class="text-center py-3">Toutes les categories</h1>
+    <a class="btn btn-danger mb-5" href="{{ route("categorie.create") }}">Ajout categorie</a>
     @include('layouts.flash')
 </div>
 
@@ -17,11 +18,11 @@
                             {{ $item->nom }}
                         </div>
                     </div>
-                    <a class="text-wrap text-center flex text-white text-bold flex-col rounded-md bg-green-500 justify-center items-center mr-10 p-2" href="{{ route('categorie.edit', $item->id) }}">Modifier</a>
+                    <a class="btn btn-success mx-1" href="{{ route('categorie.edit', $item->id) }}">Modifier</a>
                     <form action="{{ route('categorie.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="text-wrap text-center flex text-white text-bold flex-col rounded-md bg-red-500 justify-center items-center mr-10 p-2">Delete</button>
+                        <button class="btn btn-danger mx-1">Delete</button>
                     </form>
                 </div>
             </div>

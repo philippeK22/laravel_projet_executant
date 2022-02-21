@@ -146,6 +146,7 @@ class ArticleController extends Controller
     }
     public function blog()
     {
+        
         $articles = Article::all();
         return view('admin.blog.main', compact('articles'));
     }

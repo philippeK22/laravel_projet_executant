@@ -25,6 +25,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('isRealUser', function($online, $user){
+            return $online->id === $user->id;
+            // dd('ok');
+        });
+        
+
+        Gate::define('isAdmin', function($online){
+            return $online->role_id == 1 ; //admin
+        });
+
+        Gate::define('isAdminWebmaster', function($online){
+            return $online->role_id == 1 || $online->role_id == 2; //admin & webmaster
+        });
+
+
     }
 }

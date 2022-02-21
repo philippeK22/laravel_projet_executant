@@ -37,6 +37,17 @@ class UserSeeder extends Seeder
                 "avatar_id"=>2, //femme avatar
                 "created_at"=>now(),
             ],
+
+            [
+                "name"=>"zidane",
+                "prenom"=>"zinnedine",
+                "age"=>30,
+                "email"=>"phil@hotmail.com",
+                "password"=>Hash::make("zidane12"),
+                "role_id"=>3,
+                "avatar_id"=>3, //femme avatar
+                "created_at"=>now(),
+            ],
         ]);
     }
 }

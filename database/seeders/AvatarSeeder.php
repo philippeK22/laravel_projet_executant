@@ -33,7 +33,7 @@ class AvatarSeeder extends Seeder
                 "created_at"=>now(),
             ],
             [
-                "name"=>"parfeaut.png",
+                "name"=>"pardefaut.png",
                 "created_at"=>now(),
             ],
         ]);

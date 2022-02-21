@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avatar;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
@@ -46,7 +48,38 @@ class AvatarController extends Controller
         $file->name = $new_image ;
         $file->save();
         return redirect()->back() ;
+
+        $avatar = Avatar::all()->slice(1);
+        request()->validate([
+            "nom" => ["required"],
+            // "src" => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ]);
+
+           //Conditon pour vérifier si le count est + de 5
+           if (count($avatar)> 5) {
+            return redirect()->route('avatar.index')->with('warning', "Demande refusé ! Le maximum est atteint");
+        }
+
+        $avatar = new Avatar();
+        $avatar->nom = $request->nom;
+        //Condition pour vérifier si le request vient d'input FILE ou un input URL (priorité à l'input FILE)
+        if ($request->src) {
+            $request->file('src')->storePublicly('img/','public');
+            $avatar->src = $request->file('src')->hashName();
+        }else{
+            $fichierURL = file_get_contents($request->srcURL);
+            $lien = $request->srcURL;
+            $token = substr($lien, strrpos($lien, '/') + 1);
+            Storage::disk('public')->put('img/'.$token , $fichierURL);
+            $avatar->src = $token;
+        }
+        $avatar->save();
+        return redirect()->route('avatar.index')->with('success', $request->nom . 'bien ajouté !');
+
+
     }
+
+
 
     /**
      * Display the specified resource.
@@ -90,7 +123,12 @@ class AvatarController extends Controller
      */
     public function destroy(Avatar $avatar)
     {
+        $users = User::all()->where('avatar_id', $avatar->id);
+        foreach ($users as $user) {
+            $user->avatar_id = 1 ;   //seed 1 = avatar défault
+            $user->save();
+        }
         $avatar->delete();
-        return redirect()->back();
+        return redirect()->route("avatar.index")->with("warning","donnée bien supprimé");
     }
 }

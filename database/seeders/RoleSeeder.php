@@ -25,6 +25,11 @@ class RoleSeeder extends Seeder
                 "name"=>"user",
                 "created_at"=>now(),
             ],
+
+            [
+                "name"=>"webMaster",
+                "created_at"=>now(),
+            ],
         ]);
     }
 }

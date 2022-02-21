@@ -57,13 +57,13 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user){
-        // $request->validate([
-        //     'name' => ['required'],
-        //     'prenom' => ['required'],
-        //     'age' => ['required', 'numeric'],
-        //     'email' => ['required'],
-        //     'role_id' => ['required', 'numeric'],
-        // ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'age' => 'required|numeric',
+            'email' => 'required|string',
+            'avatar_id' => 'required',
+        ]);
         $user->name = $request->name;
         $user->prenom = $request->prenom;
         $user->age = $request->age;
@@ -79,13 +79,13 @@ class UserController extends Controller
     {
         $this->authorize('isRealUser', $user);
         $request->validate([
-            'nom' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'age' => 'required|numeric',
             'email' => 'required|string',
             'avatar_id' => 'required',
         ]);
-        $user->nom = $request->nom;
+        $user->name = $request->name;
         $user->prenom = $request->prenom;
         $user->age = $request->age;
         $user->email = $request->email;

@@ -15,9 +15,9 @@ class CategorieSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            ['nom' => 'voiture gris', 'created_at'=>now()],
-            ['nom' => 'voiture noir', 'created_at'=>now()],
             ['nom' => 'voiture bleu', 'created_at'=>now()],
+            ['nom' => 'voiture rouge', 'created_at'=>now()],
+            ['nom' => 'voiture jaune', 'created_at'=>now()],
 
         ]);
     }
