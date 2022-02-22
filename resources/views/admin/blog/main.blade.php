@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div
+        {{-- <div
         class="d-flex">
             <a class="btn btn-success mx-1" href="{{ route("article.edit",$article->id) }}">Modifier</a>
             <form action="{{ route("article.destroy",$article->id) }}"method="post">
@@ -37,7 +37,7 @@
 
                 <button class="btn btn-warning mx-1" type="submit">Delete</button>
             </form>
-        </div>
+        </div> --}}
     </div>
     @endforeach
 </div>

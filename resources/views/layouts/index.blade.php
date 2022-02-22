@@ -10,7 +10,9 @@
 </head>
 <body>
 
+
     @include('layouts.flash')
+    {{-- @include('partials.nav') --}}
     @yield('content')
 
 

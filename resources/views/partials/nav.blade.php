@@ -81,6 +81,13 @@
                         </a>
                         @endadmin
                     </li>
+                    @adminwebmaster
+                    <li class="nav-item">
+                        <a href="" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Article</span>
+                        </a>
+                    </li>
+                    @endadminwebmaster
                     <li class="nav-item">
                         <a href="{{ route("gallerie.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Gallerie</span>

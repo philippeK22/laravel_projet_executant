@@ -37,7 +37,7 @@ Route::delete("/admin/users/{user}/destroy",[UserController::class,"destroy"])->
 
 Route::put("/admin/users/{user}/update",[UserController::class,"update"])->middleware(['auth',"isAdmin"])->name("users.update");
 
-Route::put('admin/user/{user}/edit', [UserController::class, 'updateMembre'])->name('membre.update');
+Route::put('admin/user/{user}/edit', [UserController::class, 'updateMembre'])->middleware('auth')->name('membre.update');
 
 //Avatar
 Route::resource("admin/avatar",AvatarController::class)->middleware(["auth","isAdmin"]);
@@ -49,10 +49,10 @@ Route::resource('/admin/categorie', CategorieController::class)->middleware(["au
 Route::resource('/admin/image', ImageController::class)->middleware(["auth","isAdmin"]);
 
 // Article Blog
-Route::get('/admin/blog', [ArticleController::class, 'blog'])->middleware(["auth","isAdmin"])->name('blog.index');
+Route::get('/admin/blog', [ArticleController::class, 'blog'])->middleware(["auth"])->name('blog.index');
 
 //article
-Route::resource('admin/article', ArticleController::class);
+Route::resource('admin/article', ArticleController::class)->middleware('auth',"isAdmin");
 
 // Gallerie
 Route::get('/admin/gallerie', [ImageController::class, 'gallerie'])->name('gallerie.index');
